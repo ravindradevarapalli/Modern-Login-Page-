@@ -5,19 +5,72 @@
   font-family: "montserrat", sans-serif;
 }
 
+:root {
+  --primary-background: #c9d6ff;
+  --secondary-background: #e2e2e2;
+  --container-background: #fff;
+  --text-color: #333;
+  --link-color: #333;
+  --button-background: black;
+  --button-text-color: #fff;
+  --button-hidden-border-color: #fff;
+  --input-background: #eee;
+  --input-text-color: #111; /* Default dark text for light input backgrounds */
+  --social-icon-border: #ccc;
+  --social-icon-color: #333; /* Default color for social media icons */
+  --toggle-background: black; /* for the sliding panel */
+  --toggle-text-color: #fff; /* for the sliding panel text */
+  --box-shadow-color: rgba(0, 0, 0, 0.5);
+  --theme-toggle-button-container-bg: #f0f0f0;
+  --theme-toggle-button-bg: #fff;
+  --theme-toggle-button-text-color: #333;
+  --theme-toggle-button-border: #ccc;
+  --theme-toggle-button-hover-bg: #e0e0e0;
+  --theme-toggle-button-active-bg: #a0a0a0;
+  --theme-toggle-button-active-text: #fff;
+  --theme-toggle-button-active-border: #888;
+}
+
+body[data-theme="dark"] {
+  --primary-background: #1a1a2e; /* Dark blue/purple */
+  --secondary-background: #16213e; /* Darker blue */
+  --container-background: #0f3460; /* Dark blue for container */
+  --text-color: #e0e0e0; /* Light gray for text */
+  --link-color: #8ab4f8; /* Lighter blue for links in dark mode */
+  --button-background: #5372F0; /* A brighter blue for buttons in dark mode */
+  --button-text-color: #fff;
+  --button-hidden-border-color: #fff; /* Keep white or light for hidden button border */
+  --input-background: #1f4068; /* Darker input background */
+  --input-text-color: #e0e0e0; /* Light text for dark input backgrounds */
+  --social-icon-border: #555;
+  --social-icon-color: #e0e0e0; /* Light color for social media icons */
+  --toggle-background: #5372F0; /* Brighter blue for toggle panel */
+  --toggle-text-color: #fff;
+  --box-shadow-color: rgba(255, 255, 255, 0.2); /* Lighter shadow for dark mode */
+  --theme-toggle-button-container-bg: #1f4068;
+  --theme-toggle-button-bg: #0f3460;
+  --theme-toggle-button-text-color: #e0e0e0;
+  --theme-toggle-button-border: #555;
+  --theme-toggle-button-hover-bg: #16213e;
+  --theme-toggle-button-active-bg: #5372F0;
+  --theme-toggle-button-active-text: #fff;
+  --theme-toggle-button-active-border: #5372F0;
+}
+
 body {
-  background-color: #c9d6ff;
-  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+  background-color: var(--primary-background);
+  background: linear-gradient(to right, var(--secondary-background), var(--primary-background));
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   height: 100vh;
+  color: var(--text-color); /* Default text color for the body */
 }
 .container {
-  background-color: #fff;
+  background-color: var(--container-background);
   border-radius: 30px;
-  box-shadow: 0.5px 15px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0.5px 15px 15px var(--box-shadow-color);
   position: relative;
   overflow: hidden;
   width: 768px;
@@ -30,21 +83,23 @@ body {
   line-height: 20px;
   letter-spacing: 0.3px;
   margin: 20px 0;
+  color: var(--text-color);
 }
 
 .container span {
   font-size: 12px;
+  color: var(--text-color);
 }
 
 .container a {
-  color: #333;
+  color: var(--link-color);
   font-size: 13px;
   text-decoration: none;
   margin: 15px 0 10px;
 }
 .container button {
-  background-color: black;
-  color: #fff;
+  background-color: var(--button-background);
+  color: var(--button-text-color);
   font-size: 12px;
   padding: 10px 45px;
   border: 1px solid transparent;
@@ -58,11 +113,11 @@ body {
 
 .container button.hidden {
   background-color: transparent;
-  border-color: #fff;
+  border-color: var(--button-hidden-border-color);
 }
 
 .container form {
-  background-color: #fff;
+  background-color: var(--container-background);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,7 +126,7 @@ body {
   height: 100%;
 }
 .container input {
-  background-color: #eee;
+  background-color: var(--input-background);
   border: none;
   margin: 8px 0;
   padding: 10px 15px;
@@ -79,6 +134,7 @@ body {
   border-radius: 8px;
   width: 100%;
   outline: none;
+  color: var(--input-text-color);
 }
 
 .form-container {
@@ -86,6 +142,7 @@ body {
   top: 0;
   height: 100%;
   transition: all 0.6s ease-in-out;
+  color: var(--text-color); /* Ensure text in form containers uses the variable */
 }
 
 .sign-in {
@@ -130,7 +187,7 @@ body {
 }
 
 .social-icons a {
-  border: 1px solid #ccc;
+  border: 1px solid var(--social-icon-border);
   border-radius: 20%;
   display: inline-flex;
   justify-content: center;
@@ -138,6 +195,7 @@ body {
   margin: 0 3px;
   width: 40px;
   height: 40px;
+  color: var(--social-icon-color); /* Apply color to the icon itself (font/svg color) */
 }
 
 .toggle-container {
@@ -158,10 +216,10 @@ body {
 }
 
 .toggle {
-  background-color: black;
+  background-color: var(--toggle-background);
   height: 100%;
-  background: linear-gradient(to right, black, black);
-  color: #fff;
+  background: linear-gradient(to right, var(--toggle-background), var(--toggle-background));
+  color: var(--toggle-text-color);
   position: relative;
   left: -100%;
   height: 100%;
@@ -187,6 +245,7 @@ body {
   top: 0;
   transform: translateX(0);
   transition: all 0.6s ease-in-out;
+  color: var(--toggle-text-color); /* Use variable for text color in toggle panels */
 }
 
 .toggle-left {
@@ -204,4 +263,37 @@ body {
 
 .container.active .toggle-right {
   transform: translateX(200%);
+}
+
+/* Theme toggle button styles (from previous subtask) */
+#theme-toggle-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  padding: 5px;
+  background-color: var(--theme-toggle-button-container-bg);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px var(--box-shadow-color);
+}
+
+#theme-toggle-container button {
+  padding: 8px 12px;
+  margin: 0 3px;
+  border: 1px solid var(--theme-toggle-button-border);
+  border-radius: 4px;
+  background-color: var(--theme-toggle-button-bg);
+  color: var(--theme-toggle-button-text-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#theme-toggle-container button:hover {
+  background-color: var(--theme-toggle-button-hover-bg);
+}
+
+#theme-toggle-container button.active-theme {
+  background-color: var(--theme-toggle-button-active-bg);
+  color: var(--theme-toggle-button-active-text);
+  border-color: var(--theme-toggle-button-active-border);
 }
